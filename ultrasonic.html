@@ -1,0 +1,32 @@
+
+<html>
+<script src="bower_components/jquery/dist/jquery.js"></script>
+<script  type='text/javascript' src="bower_components/knockout/dist/knockout.js"></script>
+
+
+    <span id="light">Waiting for data...</span><br>
+    <span id="tstamp"></span><br>
+
+    <script type="text/javascript">
+
+      window.setInterval(function() {
+
+        var deviceID = "320045000b47343138333038";
+        var accessToken = "6d70190ba1f56ddce1e3616bd20442b8b859a808";
+        var varName = "cm";
+        var computeVal;
+
+        requestURL = "https://api.particle.io/v1/devices/320045000b47343138333038/cm?access_token=6d70190ba1f56ddce1e3616bd20442b8b859a808";
+        $.getJSON(requestURL, function(json) {
+                 document.getElementById("light").innerHTML = json.result;
+                 document.getElementById("light").style.fontSize = "28px";
+                 computeVal = json.result;
+                 //document.getElementById("tstamp").innerHTML = json.coreInfo.last_heard;
+
+                 });
+    }, 1000);
+    </script>
+
+
+  </body>
+</html>
